@@ -7,12 +7,12 @@ import retrofit2.http.Path
 
 
 interface RestCountriesService {
-    @GET("name/{name}?access_key=ca9741d42b55c1848501e2a5c41540ee")
-    fun getCountryByName(@Path("cityName") cityName: String): List<Country>
+    @GET("name/{cityName}")
+    suspend fun getCountryByName(@Path("cityName") cityName: String): List<Country>
 }
 
 var retrofit = Retrofit.Builder()
-    .baseUrl("https://api.countrylayer.com/v2/")
+    .baseUrl("https://countriesinfo21.herokuapp.com/")
     .addConverterFactory(GsonConverterFactory.create())
     .build()
 
